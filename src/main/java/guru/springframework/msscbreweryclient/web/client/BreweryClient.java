@@ -26,6 +26,15 @@ public class BreweryClient {
     return restTemplate.postForObject(apiHost + BEER_PATH_V1, beerDto, BeerDto.class);
   }
 
+  public boolean updateBeer(UUID id, BeerDto beerDto) {
+    try {
+      restTemplate.put(apiHost + BEER_PATH_V1 + id.toString(), beerDto);
+      return true;
+    } catch (Exception exception) {
+      return false;
+    }
+  }
+
   public void setApiHost(String apiHost) {
     this.apiHost = apiHost;
   }

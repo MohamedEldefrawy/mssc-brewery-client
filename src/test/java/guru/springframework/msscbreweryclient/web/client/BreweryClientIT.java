@@ -1,6 +1,7 @@
 package guru.springframework.msscbreweryclient.web.client;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import guru.springframework.msscbreweryclient.web.model.BeerDto;
 import java.util.UUID;
@@ -24,5 +25,12 @@ class BreweryClientIT {
     BeerDto newBeer = BeerDto.builder().beerName("new beer").build();
     BeerDto result = this.breweryClient.createBeer(newBeer);
     assertNotNull(result);
+  }
+
+  @Test
+  void updateBeerById_takeBeerDtoAndUUID_returnNoContentResponse() {
+    BeerDto newBeer = BeerDto.builder().beerName("updated beer").build();
+    boolean result = this.breweryClient.updateBeer(UUID.randomUUID(), newBeer);
+    assertTrue(result);
   }
 }

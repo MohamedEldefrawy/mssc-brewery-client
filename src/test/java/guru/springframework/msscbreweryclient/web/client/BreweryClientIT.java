@@ -14,7 +14,12 @@ public class BreweryClientIT {
   private BreweryClient breweryClient;
 
   @Test
-  void getClientById_takeUUIDClientId_returnClientDto() {
+  void getBeerById_takeUUIDClientId_returnClientDto() {
+    BeerDto result = this.breweryClient.getBeerById(UUID.randomUUID());
+    assertNotNull(result);
+  }
+  @Test
+  void createBeerById_takeBeerDto_returnClientDto() {
     BeerDto result = this.breweryClient.getBeerById(UUID.randomUUID());
     assertNotNull(result);
   }

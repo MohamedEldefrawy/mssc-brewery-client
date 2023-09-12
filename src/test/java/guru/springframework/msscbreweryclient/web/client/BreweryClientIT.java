@@ -33,4 +33,10 @@ class BreweryClientIT {
     boolean result = this.breweryClient.updateBeer(UUID.randomUUID(), newBeer);
     assertTrue(result);
   }
+
+  @Test
+  void deleteBeerById_takeUUID_returnNoContentResponse() {
+    boolean result = this.breweryClient.deleteBeer(UUID.randomUUID());
+    assertTrue(result);
+  }
 }

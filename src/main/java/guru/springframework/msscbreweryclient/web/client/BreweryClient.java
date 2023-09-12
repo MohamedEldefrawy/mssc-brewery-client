@@ -35,6 +35,15 @@ public class BreweryClient {
     }
   }
 
+  public boolean deleteBeer(UUID id) {
+    try {
+      restTemplate.delete(apiHost + BEER_PATH_V1 + id.toString());
+      return true;
+    } catch (Exception exception) {
+      return false;
+    }
+  }
+
   public void setApiHost(String apiHost) {
     this.apiHost = apiHost;
   }

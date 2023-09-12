@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class BreweryClientIT {
+class BreweryClientIT {
   @Autowired
   private BreweryClient breweryClient;
 
@@ -18,9 +18,11 @@ public class BreweryClientIT {
     BeerDto result = this.breweryClient.getBeerById(UUID.randomUUID());
     assertNotNull(result);
   }
+
   @Test
   void createBeerById_takeBeerDto_returnClientDto() {
-    BeerDto result = this.breweryClient.getBeerById(UUID.randomUUID());
+    BeerDto newBeer = BeerDto.builder().beerName("new beer").build();
+    BeerDto result = this.breweryClient.createBeer(newBeer);
     assertNotNull(result);
   }
 }

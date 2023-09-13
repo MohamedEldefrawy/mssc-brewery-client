@@ -15,7 +15,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * Created by jt on 2019-08-07.
  */
-@Component
+//@Component
 public class NIORestTemplateCustomizer implements RestTemplateCustomizer {
 
   public ClientHttpRequestFactory clientHttpRequestFactory() throws IOReactorException {

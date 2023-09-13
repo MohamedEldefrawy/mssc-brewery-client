@@ -10,33 +10,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BreweryClientIT {
+class BeerClientIT {
   @Autowired
-  private BreweryClient breweryClient;
+  private BeerClient beerClient;
 
   @Test
   void getBeerById_takeUUIDClientId_returnClientDto() {
-    BeerDto result = this.breweryClient.getBeerById(UUID.randomUUID());
+    BeerDto result = this.beerClient.getBeerById(UUID.randomUUID());
     assertNotNull(result);
   }
 
   @Test
   void createBeerById_takeBeerDto_returnClientDto() {
     BeerDto newBeer = BeerDto.builder().beerName("new beer").build();
-    BeerDto result = this.breweryClient.createBeer(newBeer);
+    BeerDto result = this.beerClient.createBeer(newBeer);
     assertNotNull(result);
   }
 
   @Test
   void updateBeerById_takeBeerDtoAndUUID_returnNoContentResponse() {
     BeerDto newBeer = BeerDto.builder().beerName("updated beer").build();
-    boolean result = this.breweryClient.updateBeer(UUID.randomUUID(), newBeer);
+    boolean result = this.beerClient.updateBeer(UUID.randomUUID(), newBeer);
     assertTrue(result);
   }
 
   @Test
   void deleteBeerById_takeUUID_returnNoContentResponse() {
-    boolean result = this.breweryClient.deleteBeer(UUID.randomUUID());
+    boolean result = this.beerClient.deleteBeer(UUID.randomUUID());
     assertTrue(result);
   }
 }

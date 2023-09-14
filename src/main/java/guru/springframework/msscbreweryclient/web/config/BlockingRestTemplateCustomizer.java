@@ -16,21 +16,21 @@ import org.springframework.web.client.RestTemplate;
 public class BlockingRestTemplateCustomizer implements RestTemplateCustomizer {
 
   @Value("${restTemplate.config.timeout}")
-  private String timeout;
+  private Integer timeout;
   @Value("${restTemplate.config.maxConnections}")
-  private String maxConnections;
+  private Integer maxConnections;
   @Value("${restTemplate.config.defaultMaxConnections}")
-  private String defaultMaxConnections;
+  private Integer defaultMaxConnections;
 
   public ClientHttpRequestFactory clientHttpRequestFactory() {
     PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
-    connectionManager.setMaxTotal(Integer.parseInt(maxConnections));
-    connectionManager.setDefaultMaxPerRoute(Integer.parseInt(defaultMaxConnections));
+    connectionManager.setMaxTotal(maxConnections);
+    connectionManager.setDefaultMaxPerRoute(defaultMaxConnections);
 
     RequestConfig requestConfig = RequestConfig
         .custom()
-        .setConnectionRequestTimeout(Integer.parseInt(timeout))
-        .setSocketTimeout(Integer.parseInt(timeout))
+        .setConnectionRequestTimeout(timeout)
+        .setSocketTimeout(timeout)
         .build();
 
     CloseableHttpClient httpClient = HttpClients
